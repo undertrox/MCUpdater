@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Updater</title>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script>if (typeof module === 'object') {
+        window.module = module;
+        module = undefined;
+    }</script>
+    <script src="jquery.js"></script>
+</head>
+<body>
+<div class="ui bottom attached active tab segment">
+    <div class="ui container">
+        <h2 class="ui horizontal divider header"><i class="bar chart icon"></i>Einstellungen</h2>
+        <div class="ui labeled fluid action input" id="mc-path">
+            <div class="ui basic label">MultiMC-Pfad</div>
+            <input id="txt-path" disabled type="text">
+            <button class="ui icon button" id="btn-search"><i class="file icon"></i></button>
+        </div>
+        <div class="ui hidden divider"></div>
+        <div class="ui labeled fluid action input" id="mod-path">
+            <div class="ui basic label">Modpack-Datei</div>
+            <input type="text" disabled id="txt-mod-path">
+            <button class="ui icon button" id="btn-lock-mod-path"><i class="lock icon" id="icn-lock"></i></button>
+        </div>
+        <div class="ui hidden divider"></div>
+        <div class="ui fluid selection dropdown" id="instance-dropdown">
+            <input name="instance" type="hidden">
+            <i class="dropdown icon"></i>
+            <div class="default text">Instanz auswählen</div>
+            <div class="menu">
+                <div class="disabled item" data-value="-1">Ungültiger MultiMC-Pfad</div>
+            </div>
+        </div>
+
+        <h2 class="ui horizontal divider header"><i class="sync icon"></i>Update</h2>
+        <div class="ui large fluid teal button"><i class="sync icon"></i> Minecraft Updaten</div>
+    </div>
+</div>
+<script src="semantic/dist/semantic.min.js"></script>
+<script src="mainClient.js"></script>
+</body>
+</html>
