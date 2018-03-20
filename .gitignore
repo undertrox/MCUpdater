@@ -1,0 +1,11 @@
+# PhpStorm project files
+*.ipr
+*.iws
+.idea/
+
+# Netbeans project files
+nbproject/
+nbactions.xml
+
+node_modules/
+package-lock.json

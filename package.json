@@ -1,0 +1,23 @@
+{
+  "name": "updater",
+  "version": "0.0.1",
+  "description": "An Updater to update Minecraft (MultiMC) for my friends",
+  "main": "main.js",
+  "dependencies": {
+    "electron-prebuilt-compile": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/undertrox/MCUpdater.git"
+  },
+  "author": "undertrox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/undertrox/MCUpdater/issues"
+  },
+  "homepage": "https://github.com/undertrox/MCUpdater#readme"
+}
