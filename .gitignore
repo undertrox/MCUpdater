@@ -9,3 +9,7 @@ nbactions.xml
 
 node_modules/
 package-lock.json
+semantic/
+semantic.json
+jquery.js
+updater_settings.json
