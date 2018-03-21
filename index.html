@@ -9,6 +9,11 @@
         module = undefined;
     }</script>
     <script src="jquery.js"></script>
+    <style>
+        .invisible {
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
 <div class="ui bottom attached active tab segment">
@@ -35,10 +40,30 @@
             </div>
         </div>
 
-        <h2 class="ui horizontal divider header"><i class="sync icon"></i>Update</h2>
-        <div class="ui large fluid teal button"><i class="sync icon"></i> Minecraft Updaten</div>
+        <h2 class="ui horizontal divider header" id="header-update"><i class="sync icon"></i>Update</h2>
+        <button class="ui large fluid teal button" disabled id="btn-update"><i class="sync icon"></i> Minecraft Updaten</button>
+        <div class="ui hidden divider"></div>
+        <div class="ui invisible progress mods" data-value="0">
+            <div class="bar progress-download">
+                <div class="progress progress-download"></div>
+            </div>
+            <div class="label">
+                <span id="progress-text">
+                </span>
+            </div>
+        </div>
+        <div class="ui invisible progress mod" data-value="0">
+            <div class="bar progress-download">
+                <div class="progress progress-download"></div>
+            </div>
+            <div class="label">
+                <span id="progress-text-1">
+                </span>
+            </div>
+        </div>
     </div>
 </div>
+<script src="downloader.js"></script>
 <script src="semantic/dist/semantic.min.js"></script>
 <script src="mainClient.js"></script>
 </body>
