@@ -21,14 +21,45 @@ if (env.name !== "production") {
   app.setPath("userData", `${userDataPath} (${env.name})`);
 }
 
+autoUpdater.logger = require("electron-log");
+autoUpdater.logger.transports.file.level = "info";
 app.on("ready", () => {
   Menu.setApplicationMenu(null);
   const mainWindow = createWindow("main", {
     width: 1000,
     height: 502
   });
-  autoUpdater.logger = require("electron-log")
-  autoUpdater.logger.transports.file.level = "info"
+
+  let version = require('../package.json').version;
+  let windowTitle = "Minecraft Updater v" + version;
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.setTitle(windowTitle)
+  });
+
+  autoUpdater.on('checking-for-update', () => {
+    mainWindow.setTitle(windowTitle + " - Checking for Updates...");
+  })
+  autoUpdater.on('update-available', (info) => {
+    mainWindow.setTitle(windowTitle + ' - Update available.');
+  })
+  autoUpdater.on('update-not-available', (info) => {
+    mainWindow.setTitle(windowTitle + ' - Update not available.');
+  })
+  autoUpdater.on('error', (err) => {
+    mainWindow.setTitle(windowTitle + ' - Error in auto-updater. ' + err);
+  })
+  autoUpdater.on('download-progress', (progressObj) => {
+    let log_message = "Download speed: " + progressObj.bytesPerSecond;
+    log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+    log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+    mainWindow.setTitle(windowTitle + " - " + log_message);
+  })
+  autoUpdater.on('update-downloaded', (info) => {
+    mainWindow.setTitle(windowTitle + ' - Update downloaded');
+  });
+
+
+
   autoUpdater.checkForUpdatesAndNotify();
 
   mainWindow.loadURL(
