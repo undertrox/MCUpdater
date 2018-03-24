@@ -2,7 +2,7 @@
   "name": "mc-updater",
   "productName": "Minecraft Updater",
   "description": "Updatet Minecraft",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": true,
   "author": "undertrox <undertrox@gmail.com>",
   "copyright": "© 2017, undertrox",
