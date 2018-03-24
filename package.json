@@ -2,7 +2,7 @@
   "name": "mc-updater",
   "productName": "Minecraft Updater",
   "description": "Updatet Minecraft",
-  "version": "0.0.3",
+  "version": "0.0.3.1",
   "private": true,
   "author": "undertrox <undertrox@gmail.com>",
   "copyright": "© 2017, undertrox",
@@ -15,11 +15,13 @@
       "node_modules/**/*",
       "package.json"
     ],
-    "publish": [{
-      "provider": "github",
-      "owner": "undertrox",
-      "repo": "MCUpdater"
-    }],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "undertrox",
+        "repo": "MCUpdater"
+      }
+    ],
     "directories": {
       "buildResources": "resources"
     }
@@ -38,7 +40,8 @@
     "fs-jetpack": "^1.0.0",
     "glob": "7.1.2",
     "request": "2.85.0",
-    "electron-updater": "2.21.3"
+    "electron-updater": "2.21.3",
+    "electron-log": "2.2.14"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.5",

@@ -27,6 +27,8 @@ app.on("ready", () => {
     width: 1000,
     height: 502
   });
+  autoUpdater.logger = require("electron-log")
+  autoUpdater.logger.transports.file.level = "info"
   autoUpdater.checkForUpdatesAndNotify();
 
   mainWindow.loadURL(
