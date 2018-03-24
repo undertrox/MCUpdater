@@ -1,15 +1,17 @@
-# PhpStorm project files
-*.ipr
-*.iws
-.idea/
+node_modules
+.DS_Store
+Thumbs.db
+*.log
 
-# Netbeans project files
-nbproject/
-nbactions.xml
+/dist
+/temp
 
-node_modules/
-package-lock.json
-semantic/
-semantic.json
-jquery.js
+# ignore everything in 'app' folder what had been generated from 'src' folder
+/app/app.js
+/app/background.js
+/app/**/*.map
+
+/app/semantic/
 updater_settings.json
+mods.json
+README.md
