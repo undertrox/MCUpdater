@@ -5,10 +5,9 @@
 
 import path from "path";
 import url from "url";
-import { app, Menu } from "electron";
-import { autoUpdater } from 'electron-updater'
+import {app, Menu} from "electron";
+import {autoUpdater} from "electron-updater";
 import createWindow from "./helpers/window";
-
 // Special module holding environment variables which you declared
 // in config/env_xxx.json file.
 import env from "env";
@@ -32,30 +31,35 @@ app.on("ready", () => {
 
   let version = require('../package.json').version;
   let windowTitle = "Minecraft Updater v" + version;
+  let t = "";
   mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.setTitle(windowTitle)
+    mainWindow.setTitle(t)
   });
 
   autoUpdater.on('checking-for-update', () => {
     mainWindow.setTitle(windowTitle + " - Checking for Updates...");
-  })
+    t = mainWindow.getTitle()
+  });
   autoUpdater.on('update-available', (info) => {
     mainWindow.setTitle(windowTitle + ' - Update available.');
-  })
+    t = mainWindow.getTitle()
+  });
   autoUpdater.on('update-not-available', (info) => {
-    mainWindow.setTitle(windowTitle + ' - Update not available.');
-  })
+    mainWindow.setTitle(windowTitle + ' - No Update available');
+    t = mainWindow.getTitle()
+  });
   autoUpdater.on('error', (err) => {
     mainWindow.setTitle(windowTitle + ' - Error in auto-updater. ' + err);
-  })
+    t = mainWindow.getTitle()
+  });
   autoUpdater.on('download-progress', (progressObj) => {
-    let log_message = "Download speed: " + progressObj.bytesPerSecond;
-    log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
-    log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+    let log_message = "Updating:" + Math.round(progressObj.percent * 100) / 100 + "% downloaded (" + progressObj.bytesPerSecond / 1000 + "KB/S)";
     mainWindow.setTitle(windowTitle + " - " + log_message);
-  })
+    t = mainWindow.getTitle()
+  });
   autoUpdater.on('update-downloaded', (info) => {
-    mainWindow.setTitle(windowTitle + ' - Update downloaded');
+    mainWindow.setTitle(windowTitle + ' - Update downloaded - Restart Program to update');
+    t = mainWindow.getTitle()
   });
 
 
