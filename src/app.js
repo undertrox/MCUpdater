@@ -247,6 +247,26 @@ $(() => {
 
         };
         downloadMod(0, downloadMod);
+        // Forge updaten
+        let forgeVersion = modsObject.forge;
+        let instanceSettingsPath = instancePath.split("\\");
+        instanceSettingsPath.pop();
+        instanceSettingsPath.pop();
+        instanceSettingsPath.pop();
+        instanceSettingsPath = instanceSettingsPath.join("\\") + "\\mmc-pack.json";
+        fs.move(instanceSettingsPath, instanceSettingsPath + ".backup");
+        let instanceSettings = JSON.parse(fs.readFileSync(instanceSettingsPath));
+        for (let i = 0; i< instanceSettings.components.length; i++) {
+          if (instanceSettings.components[i].uid == "net.minecraftforge") {
+            instanceSettings.components[i].version = forgeVersion;
+          }
+        }
+        fs.writeFile(instanceSettingsPath, JSON.stringify(instanceSettings), {flag: "w"}, (err) => {
+          if (err) {
+            alert("Ein Fehler ist beim Speichern der Versionsdatei aufgetreten: " + err.message);
+            console.log(err);
+          }
+        });
       });
 
 
