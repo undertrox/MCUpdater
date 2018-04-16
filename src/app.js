@@ -254,8 +254,8 @@ $(() => {
         instanceSettingsPath.pop();
         instanceSettingsPath.pop();
         instanceSettingsPath = instanceSettingsPath.join("\\") + "\\mmc-pack.json";
-        fs.move(instanceSettingsPath, instanceSettingsPath + ".backup");
-        let instanceSettings = JSON.parse(fs.readFileSync(instanceSettingsPath));
+        fs.renameSync(instanceSettingsPath, instanceSettingsPath + ".backup");
+        let instanceSettings = JSON.parse(fs.readFileSync(instanceSettingsPath + ".backup"));
         for (let i = 0; i< instanceSettings.components.length; i++) {
           if (instanceSettings.components[i].uid == "net.minecraftforge") {
             instanceSettings.components[i].version = forgeVersion;
